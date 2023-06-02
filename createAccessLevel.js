@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const AccessLevel = require('./models/AccessLevel');
 
-mongoose.connect('mongodb+srv://simbora:noo9ssMryT0h5F9p@cluster0.ff5cstn.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://samiralemos2016:unifor1227@clustersam.hoeyguw.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

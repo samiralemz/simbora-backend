@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    nivelAcesso: {
+    AccessLevel: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'AccessLevel',
         required: true,

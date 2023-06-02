@@ -2,17 +2,18 @@ const User = require('../models/user');
 
 exports.createUser = async (req, res) => {
   try {
-    const { nome, email, senha, nivelAcesso, cpf_cnpj, telefone, sobrenome } = req.body;
+    const { nome, email, senha, AccessLevel, cpf_cnpj, telefone, sobrenome } = req.body;
 
-    // nivelAcessoId
-    // 646e9089daa015d12e6b3647 produtor
-    // 646e9089daa015d12e6b3648 cliente
+    // AccessLevelId
+    // 64799ebb00b84c0de2a78a44 produtor
+    // 64799ebb00b84c0de2a78a45 cliente
+
     const newUser = new User({
       nome,
       sobrenome,
       email,
       senha,
-      nivelAcesso,
+      AccessLevel,
       imagem: req?.file?.filename ?? null,
       cpf_cnpj,
       telefone
@@ -29,7 +30,7 @@ exports.createUser = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find()
     res.status(200).json(users);
   } catch (error) {
     console.error(error);
