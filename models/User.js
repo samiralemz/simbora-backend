@@ -31,9 +31,9 @@ const userSchema = new mongoose.Schema({
         required: false
     },
     AccessLevel: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'AccessLevel',
-        required: true,
+        type: String,
+        enum: ['cliente', 'produtor'],
+        default: 'user'
     },
 }, { timestamps: true });
 
