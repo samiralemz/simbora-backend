@@ -2,11 +2,14 @@ const User = require('../models/user');
 
 exports.createUser = async (req, res) => {
   try {
-    const { nome, email, senha, AccessLevel, cpf_cnpj, telefone, sobrenome } = req.body;
+    const { nome, email, senha, AccessLevel, cpf_cnpj, telefone, telefone2, sobrenome } = req.body;
 
-    // AccessLevelId
-    // 64799ebb00b84c0de2a78a44 produtor
-    // 64799ebb00b84c0de2a78a45 cliente
+
+    // Verificar se o email já está em uso
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'O email fornecido já está em uso.' });
+    }
 
     const newUser = new User({
       nome,
@@ -16,7 +19,8 @@ exports.createUser = async (req, res) => {
       AccessLevel,
       imagem: req?.file?.filename ?? null,
       cpf_cnpj,
-      telefone
+      telefone,
+      telefone2
     });
 
     const createdUser = await newUser.save();
@@ -53,7 +57,7 @@ exports.getUserById = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
   try {
-    const { nome, email, senha, cpf_cnpj, telefone, sobrenome } = req.body;
+    const { nome, email, senha, cpf_cnpj, telefone, telefone2, sobrenome } = req.body;
 
     const user = await User.findById(req.params.id);
     if (!user) {
@@ -65,6 +69,7 @@ exports.updateUser = async (req, res) => {
     user.email = email;
     user.senha = senha;
     user.telefone = telefone;
+    user.telefone2 = telefone2;
     user.cpf_cnpj = cpf_cnpj;
     user.sobrenome = sobrenome;
 

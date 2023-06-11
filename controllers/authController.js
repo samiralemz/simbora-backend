@@ -10,8 +10,8 @@ exports.login = async (req, res) => {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    if (user.AccessLevel !== 'produtor') {
-      return res.status(401).json({ message: 'Usuário Não Produtor!' });
+    if (user.AccessLevel === 'produtor') {
+      return res.status(401).json({ message: 'Usuário Não Cliente!' });
     }
 
     // Verificar a senha
@@ -36,8 +36,8 @@ exports.loginProdutor = async (req, res) => {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    if (user.AccessLevel !== 'cliente') {
-      return res.status(401).json({ message: 'Usuário Não Cliente!' });
+    if (user.AccessLevel === 'cliente') {
+      return res.status(401).json({ message: 'Usuário Não Produtor!' });
     }
 
     // Verificar a senha

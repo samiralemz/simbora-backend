@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    telefone2: {
+        type: String,
+        required: false
+    },
     imagem: {
         type: String,
         required: false
@@ -33,7 +37,7 @@ const userSchema = new mongoose.Schema({
     AccessLevel: {
         type: String,
         enum: ['cliente', 'produtor'],
-        default: 'user'
+        default: 'cliente'
     },
 }, { timestamps: true });
 
