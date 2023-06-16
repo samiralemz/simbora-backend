@@ -32,7 +32,21 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  tags: [String]
+  tags: [String],
+  publico_estimado: {
+    type: Number,
+    required: true
+  },
+  usuario_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+});
+
+eventSchema.index({
+  titulo: 'text',
+  descricao: 'text',
+  tags: 'text'
 });
 
 const Event = mongoose.model('Event', eventSchema);

@@ -6,6 +6,8 @@ const eventRoutes = require('../routes/event');
 const categoryRoutes = require('../routes/category');
 const favoriteRoutes = require('../routes/favorite');
 const authRoutes = require('../routes/auth');
+const locationRoutes = require('../routes/location');
+
 
 
 
@@ -23,6 +25,9 @@ router.use('/category', categoryRoutes);
 
 // Rotas relacionadas ao favoritar
 router.use('/favorite', favoriteRoutes);
+
+// Rotas relacionadas ao Local
+router.use('/location', locationRoutes);
 
 
 module.exports = router;

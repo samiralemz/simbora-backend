@@ -6,6 +6,9 @@ const favoriteController = require('../controllers/favoriteController');
 router.post('/', favoriteController.favoriteEvent);
 
 // Rota para desfavoritar um evento
-router.delete('/', favoriteController.unfavoriteEvent);
+router.post('/unFavorite', favoriteController.unfavoriteEvent);
+
+// Rota para trazer os eventos favoritados por um usuario
+router.get('/byUser/:usuario_id', favoriteController.getFavoriteEvents);
 
 module.exports = router;

@@ -20,6 +20,12 @@ router.post('/', upload.single('imagem'), eventController.createEvent);
 // Rota para obter todos os eventos
 router.get('/', eventController.getAllEvents);
 
+// Rota para obter todos os eventos como array
+router.get('/autocomplete', eventController.getAllEventsAutoComplete);
+
+// Rota para obter todos os eventos de uma pesquisa
+router.get('/search/:keyword', eventController.searchEventsByKeyword);
+
 // Rota para obter um evento pelo ID
 router.get('/:id', eventController.getEventById);
 
@@ -28,5 +34,11 @@ router.put('/:id', upload.single('imagem'), eventController.updateEvent);
 
 // Rota para excluir um evento
 router.delete('/:id', eventController.deleteEvent);
+
+// Rota para buscar eventos por usuario_id
+router.get('/usuario/:usuario_id', eventController.getEventsByUserId);
+
+// Rota para buscar eventos por categoria_id
+router.get('/categoria/:categoria', eventController.getEventsByCategoryId);
 
 module.exports = router;

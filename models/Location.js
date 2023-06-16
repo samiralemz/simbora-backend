@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
-  nome: {
+  nome_local: {
     type: String,
     required: true
   },
-  endereco: {
+  cep: {
+    type: String,
+    require: true
+  },
+  pais: {
     type: String,
     required: true
   },
@@ -17,13 +21,19 @@ const locationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  pais: {
+  bairro: {
+    type: String
+  },
+  logradouro: {
     type: String,
     required: true
   },
-  publico_estimado: {
-    type: Number,
+  numero: {
+    type: String,
     required: true
+  },
+  complemento: {
+    type: String
   }
 });
 
